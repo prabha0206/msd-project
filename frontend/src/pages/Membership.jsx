@@ -1,6 +1,7 @@
 // frontend/src/pages/Membership.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../config/api';
 
 const Membership = () => {
   const [plans, setPlans] = useState([]);
@@ -8,7 +9,7 @@ const Membership = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await axios.get((process.env.REACT_APP_API_URL || '') + '/api/memberships');
+        const res = await axios.get(`${API_BASE_URL}/memberships`);
         setPlans(res.data);
       } catch (err) {
         console.error(err);

@@ -10,7 +10,7 @@ const app = express();
 
 // ✅ enable CORS for React frontend
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: ["https://msd-project-weld-one.vercel.app", "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));

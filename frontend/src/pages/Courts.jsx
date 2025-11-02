@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FilterBar from '../components/FilterBar';
 import { useLocation } from 'react-router-dom';
+import { API_BASE_URL } from '../config/api';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -25,7 +26,7 @@ const Courts = () => {
         if (filters.sport) params.sport = filters.sport;
         if (filters.search) params.search = filters.search;
         if (filters.sortBy) params.sortBy = filters.sortBy;
-        const res = await axios.get((process.env.REACT_APP_API_URL || '') + '/api/courts', { params });
+        const res = await axios.get(`${API_BASE_URL}/courts`, { params });
         setCourts(res.data);
       } catch (err) {
         console.error(err);

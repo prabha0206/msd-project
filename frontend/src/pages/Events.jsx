@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventCard from '../components/EventCard';
+import { API_BASE_URL } from '../config/api';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -9,7 +10,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get((process.env.REACT_APP_API_URL || '') + '/api/events');
+        const res = await axios.get(`${API_BASE_URL}/events`);
         setEvents(res.data);
       } catch (err) {
         console.error(err);
